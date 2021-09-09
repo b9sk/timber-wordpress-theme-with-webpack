@@ -15,9 +15,10 @@
 
 $context          = Timber::context();
 $context['posts'] = new Timber\PostQuery();
-$context['foo']   = 'bar';
+$context['foo']   = 'baz';
 $templates        = array( 'index.twig' );
 if ( is_home() ) {
+	// List of suggested templates
 	array_unshift( $templates, 'front-page.twig', 'home.twig' );
 }
 Timber::render( $templates, $context );
