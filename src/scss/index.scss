@@ -1,5 +1,20 @@
+@import 'sprites';
+
+i {
+  display: inline-block;
+}
+
 @import 'base/fonts';
 @import 'base/variables';
 @import 'base/typography';
 
 @import 'layout/body';
+
+////
+// Tests
+////
+.test-sprite {
+  @include sprite('test-file',
+    $include-size: 'box',
+  );
+}

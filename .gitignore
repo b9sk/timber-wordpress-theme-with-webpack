@@ -4,3 +4,6 @@ composer.lock
 node_modules/
 package-lock.json
 dist/
+
+# Generates at npm run <command>
+src/scss/sprites.scss

@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 
 mix.options({
   processCssUrls: false
@@ -15,7 +16,39 @@ mix
     'dist/style.css'
   )
 
-mix.webpackConfig
+mix.webpackConfig({
+  plugins: [
+    new SVGSpritemapPlugin(
+        [
+            // might be multiple values
+            'src/icons/**/*.svg',
+        ],
+        {
+          output: {
+            svg: {
+              sizes: false,
+            },
+            svg4everybody: false,
+            chunk: {
+              keep: true,
+            },
+          },
+          sprite: {
+            gutter: 5,
+            generate: {
+              title: false,
+              use: true,
+              symbol: true,
+              view: "-view",
+            }
+          },
+          styles: {
+            filename: 'src/scss/sprites.scss'
+          }
+        }
+    )
+  ]
+});
 
 if (!mix.inProduction()) {
   mix
